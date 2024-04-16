@@ -10,7 +10,7 @@ class AboutScreen extends StatelessWidget {
           'About',
           style: TextStyle(
             color: Color(0xff030F09),
-            fontSize: 17,
+            fontSize: 18,
           ),
         ),
         centerTitle: true,

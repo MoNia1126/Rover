@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rover/Setting/setting_screen.dart';
 import 'package:rover/about/about_screen.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: "rover",
       debugShowCheckedModeBanner: false,
-      home: AboutScreen(),
+      home: SettingScreen(),
     );
   }
 

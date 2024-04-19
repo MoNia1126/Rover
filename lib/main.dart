@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "rover",
       debugShowCheckedModeBanner: false,
-      home: AvailableScreen(),
+      home: MytripScreen(),
     );
   }
 

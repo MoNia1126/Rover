@@ -1,595 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:rover/Category/tab_container.dart';
+import 'package:rover/Category/tab_item.dart';
+import 'package:rover/My%20Trip/myTrip_delete.dart';
+import 'package:rover/My%20Trip/myTrip_item.dart';
 
 class MytripScreen extends StatelessWidget {
+  static const String routeName = 'myTrip_screen';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'MyTrip',
-          style: TextStyle(
-            color: Color(0xff030F09),
-            fontSize: 18,
-          ),
-        ),
-        centerTitle: true,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: Color(0xffE60024),
-        ),
-        actions: [
-          Image.asset(
-            'assets/images/profile.png',
-          )
-        ],
-        backgroundColor: Colors.white,
-      ),
-      body: SingleChildScrollView(
-        child: Column(children: [
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.07,
-            width: MediaQuery.sizeOf(context).width * 0.93,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Color(0xffFFFFFF),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 8,
-                    offset: Offset(0, 0),
-                    color: Colors.grey.withOpacity(0.4),
-                  )
-                ]),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                ),
-                hintText: "Search",
-                hintStyle: TextStyle(fontSize: 15, color: Colors.black),
-                prefixIcon: Icon(Icons.search),
-                prefixIconColor: Colors.black,
-              ),
+        appBar: AppBar(
+          title: Text(
+            'MyTrip',
+            style: TextStyle(
+              color: Color(0xff030F09),
+              fontSize: 18,
             ),
           ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.06,
-            width: MediaQuery.sizeOf(context).width * 0.88,
-            child: Row(
+          centerTitle: true,
+          leading: Icon(
+            Icons.arrow_back_ios,
+            color: Color(0xffE60024),
+          ),
+          actions: [
+            Image.asset(
+              'assets/images/profile.png',
+            )
+          ],
+          backgroundColor: Colors.white,
+        ),
+        body: ListView(
+          children: [
+            Column(
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle accept trip button press
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xffE60024),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      minimumSize: Size(75, 40)),
-                  child: Text(
-                    'All',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                Container(
+                  height: MediaQuery.sizeOf(context).height * 0.07,
+                  width: MediaQuery.sizeOf(context).width * 0.93,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
                       color: Color(0xffFFFFFF),
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 8,
+                          offset: Offset(0, 0),
+                          color: Colors.grey.withOpacity(0.4),
+                        )
+                      ]),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                      ),
+                      hintText: "Search",
+                      hintStyle: TextStyle(fontSize: 15, color: Colors.black),
+                      prefixIcon: Icon(Icons.search),
+                      prefixIconColor: Colors.black,
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 5,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle accept trip button press
-                  },
-                  style: ElevatedButton.styleFrom(
-                      side: BorderSide(
-                        width: 1.5,
-                        color: Color(0xffE60024),
-                      ),
-                      backgroundColor: Color(0xffFFFFFF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      minimumSize: Size(75, 40)),
-                  child: Text(
-                    'New',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffE60024),
-                    ),
-                  ),
-                ),
+                Container(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TabItem(isSelected: true, source: "All"),
+                    TabItem(isSelected: false, source: "New"),
+                  ],
+                )),
+                MyTripItem(
+                    date: "16/2/2024",
+                    day: "Monday",
+                    time: "3pm",
+                    to: "Alex",
+                    from: "Cairo",
+                    price: "100 LE",
+                    image: AssetImage("assets/images/person.png")),
+                MyTripItem(
+                    date: "16/2/2024",
+                    day: "Monday",
+                    time: "3pm",
+                    to: "Alex",
+                    from: "Cairo",
+                    price: "100 LE",
+                    image: AssetImage("assets/images/person.png")),
+                MyTripDelete(
+                    date: "16/2/2024",
+                    day: "Monday",
+                    time: "3pm",
+                    to: "Alex",
+                    from: "Cairo",
+                    price: "100 LE",
+                    image: AssetImage("assets/images/person.png")),
               ],
             ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.23,
-            width: MediaQuery.sizeOf(context).width * 0.88,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Color(0xffFFFFFF),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 8,
-                    offset: Offset(0, 0),
-                    color: Colors.grey.withOpacity(0.4),
-                  )
-                ]),
-            child: Container(
-              padding: EdgeInsets.all(6),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(35),
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/person.png")),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                    // padding: EdgeInsets.only(top: 25),
-                    margin: EdgeInsets.only(top: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text('Day: 16/2/2024',
-                                style: TextStyle(
-                                    color: Color(0xff707070),
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold)),
-                            SizedBox(width: 6),
-                            Text('| Monday |',
-                                style: TextStyle(
-                                    fontSize: 15.0, color: Color(0xffE60024))),
-                            SizedBox(width: 6),
-                            Text('3pm',
-                                style: TextStyle(
-                                    fontSize: 15.0, color: Color(0xffA8A8A8))),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset('assets/images/from.png'),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "Cairo",
-                              style: TextStyle(
-                                  fontSize: 15, color: Color(0xffE60024)),
-                            )
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0.28, left: 4),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset('assets/images/ll.png'),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset('assets/images/to.png'),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "Alex",
-                              style: TextStyle(
-                                  fontSize: 15, color: Color(0xffA8A8A8)),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "Price: 100 LE",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff707070)),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                // Handle accept trip button press
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffD3D3D3),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  minimumSize: Size(100, 35)),
-                              child: Text(
-                                'Decline',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff030F09),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 6),
-                            ElevatedButton(
-                              onPressed: () {
-                                // Handle accept trip button press
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffE60024),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  minimumSize: Size(100, 35)),
-                              child: Text(
-                                'Details',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xffFFFFFF),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.23,
-            width: MediaQuery.sizeOf(context).width * 0.88,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Color(0xffFFFFFF),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 8,
-                    offset: Offset(0, 0),
-                    color: Colors.grey.withOpacity(0.4),
-                  )
-                ]),
-            child: Container(
-              padding: EdgeInsets.all(6),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(35),
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/person.png")),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                    // padding: EdgeInsets.only(top: 25),
-                    margin: EdgeInsets.only(top: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text('Day: 16/2/2024',
-                                style: TextStyle(
-                                    color: Color(0xff707070),
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold)),
-                            SizedBox(width: 6),
-                            Text('| Monday |',
-                                style: TextStyle(
-                                    fontSize: 15.0, color: Color(0xffE60024))),
-                            SizedBox(width: 6),
-                            Text('3pm',
-                                style: TextStyle(
-                                    fontSize: 15.0, color: Color(0xffA8A8A8))),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset('assets/images/from.png'),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "Cairo",
-                              style: TextStyle(
-                                  fontSize: 15, color: Color(0xffE60024)),
-                            )
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0.28, left: 4),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset('assets/images/ll.png'),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset('assets/images/to.png'),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "Alex",
-                              style: TextStyle(
-                                  fontSize: 15, color: Color(0xffA8A8A8)),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "Price: 100 LE",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff707070)),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                // Handle accept trip button press
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffD3D3D3),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  minimumSize: Size(250, 35)),
-                              child: Text(
-                                'Delete',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff030F09),
-                                ),
-                              ),
-                            ),
-                            // SizedBox(width: 6),
-                            // ElevatedButton(
-                            //   onPressed: () {
-                            //     // Handle accept trip button press
-                            //   },
-                            //   style: ElevatedButton.styleFrom(
-                            //       backgroundColor: Color(0xffE60024),
-                            //       shape: RoundedRectangleBorder(
-                            //         borderRadius: BorderRadius.circular(25),
-                            //       ),
-                            //       minimumSize: Size(100, 35)),
-                            //   child: Text(
-                            //     'Details',
-                            //     style: TextStyle(
-                            //       fontSize: 16,
-                            //       fontWeight: FontWeight.bold,
-                            //       color: Color(0xffFFFFFF),
-                            //     ),
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.23,
-            width: MediaQuery.sizeOf(context).width * 0.88,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Color(0xffFFFFFF),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 8,
-                    offset: Offset(0, 0),
-                    color: Colors.grey.withOpacity(0.4),
-                  )
-                ]),
-            child: Container(
-              padding: EdgeInsets.all(6),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(35),
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/person.png")),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                    // padding: EdgeInsets.only(top: 25),
-                    margin: EdgeInsets.only(top: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text('Day: 16/2/2024',
-                                style: TextStyle(
-                                    color: Color(0xff707070),
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold)),
-                            SizedBox(width: 6),
-                            Text('| Monday |',
-                                style: TextStyle(
-                                    fontSize: 15.0, color: Color(0xffE60024))),
-                            SizedBox(width: 6),
-                            Text('3pm',
-                                style: TextStyle(
-                                    fontSize: 15.0, color: Color(0xffA8A8A8))),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset('assets/images/from.png'),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "Cairo",
-                              style: TextStyle(
-                                  fontSize: 15, color: Color(0xffE60024)),
-                            )
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0.28, left: 4),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset('assets/images/ll.png'),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset('assets/images/to.png'),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "Alex",
-                              style: TextStyle(
-                                  fontSize: 15, color: Color(0xffA8A8A8)),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "Price: 100 LE",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff707070)),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                // Handle accept trip button press
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffD3D3D3),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  minimumSize: Size(100, 35)),
-                              child: Text(
-                                'Decline',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff030F09),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 6),
-                            ElevatedButton(
-                              onPressed: () {
-                                // Handle accept trip button press
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffE60024),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  minimumSize: Size(100, 35)),
-                              child: Text(
-                                'Details',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xffFFFFFF),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ]),
-      ),
-    );
+          ],
+        ));
   }
 }

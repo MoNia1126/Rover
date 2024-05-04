@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
-class SettingScreen extends StatelessWidget {
+class SettingScreen extends StatefulWidget {
+  static const String routeName = 'setting_screen';
+
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingScreen> {
+  bool isDarkModeOn = false;
+  bool isSaveDataOn = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,104 +29,101 @@ class SettingScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      body: Container(
-        // height: 150,
-        // color: Colors.cyan,
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Dark Mode ',
-                  // textAlign: TextAlign.left,
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff030F09)),
-                ),
-                Switch(
-                  activeColor: Colors.redAccent,
-                  onChanged: (val) {},
-                  value: false,
-                ),
-              ],
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text(
+              'Dark Mode',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff030F09)),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Save Data & Distance ',
-                  // textAlign: TextAlign.left,
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff030F09)),
-                ),
-                Switch(
-                  activeColor: Colors.redAccent,
-                  onChanged: (val) {},
-                  value: true,
-                ),
-              ],
+            trailing: Switch(
+              activeColor: Colors.redAccent,
+              value: isDarkModeOn,
+              onChanged: (value) {
+                setState(() {
+                  isDarkModeOn = value;
+                });
+              },
             ),
-            SizedBox(
-              height: 10,
+          ),
+          ListTile(
+            title: Text(
+              'Save Data & Distance',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff030F09)),
             ),
-            Divider(
-              color: Color(0xffE6E6E6),
-              thickness: 2,
+            trailing: Switch(
+              activeColor: Colors.redAccent,
+              value: isSaveDataOn,
+              onChanged: (value) {
+                setState(() {
+                  isSaveDataOn = value;
+                });
+              },
             ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Change Language',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Color(0xff030F09)),
-                ),
-                Icon(Icons.arrow_forward_ios),
-              ],
+          ),
+          Divider(
+            color: Color(0xffE6E6E6),
+            thickness: 2,
+          ),
+          ListTile(
+            title: Text(
+              'Change Language',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Color(0xff030F09)),
             ),
-            SizedBox(
-              height: 20,
+            trailing: DropdownButton<String>(
+              value: 'English',
+              style: TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Color(0xff030F09)),
+              items:
+                  <String>['English', 'Arabic', 'French'].map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (newValue) {},
             ),
-            Row(
-              children: [
-                Text(
-                  "Delete Account",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xffE60024),
-                  ),
-                ),
-              ],
+          ),
+          ListTile(
+            title: Text(
+              "Delete Account",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xffE60024),
+              ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.logout,
+            onTap: () {
+              // Implement option 2 functionality
+            },
+          ),
+          ListTile(
+            title: Text("Log Out",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                   color: Color(0xffE60024),
-                ),
-                Text("Log Out",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffE60024),
-                    )),
-              ],
+                )),
+            trailing: Icon(
+              Icons.logout,
+              color: Color(0xffE60024),
             ),
-          ],
-        ),
+            onTap: () {
+              // Implement option 1 functionality
+            },
+          ),
+        ],
       ),
     );
   }
